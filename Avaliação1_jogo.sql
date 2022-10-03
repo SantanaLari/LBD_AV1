@@ -158,11 +158,11 @@ SET @dataUltimo = '23/02/2022'
 
 --CABEÇAS
 	INSERT INTO jogos VALUES
-	(1,2,NULL,NULL,'23/02/2022'),
-	(1,3,NULL,NULL,'27/02/2022'),
-	(1,4,NULL,NULL,'27/02/2022'),
-	(2,3,NULL,NULL,'23/02/2022'),
-	(2,4,NULL,NULL,'27/02/2022'),
+	(1,2,NULL,NULL,'06/02/2022'),
+	(1,3,NULL,NULL,'09/02/2022'),
+	(1,4,NULL,NULL,'13/02/2022'),
+	(2,3,NULL,NULL,'16/02/2022'),
+	(2,4,NULL,NULL,'20/02/2022'),
 	(3,4,NULL,NULL,'23/02/2022')
 
 --RESTO 1
@@ -176,7 +176,7 @@ SET @dataUltimo = '23/02/2022'
 		ELSE
 		BEGIN
 			SET @timeB = @cont
-			EXEC sp_data @data = '02/02/2022'
+			EXEC sp_data @data = '23/02/2022'
 			SET @dataUltimo = @data
 			INSERT INTO jogos VALUES
 			(@timeA, @timeB, NULL, NULL, @data)
@@ -388,16 +388,16 @@ DECLARE @timeA INT,
 			@dataUltimo DATE,
 			@data DATE
 SET @cont = 5
-SET @data = '02/02/2022'
+SET @data = '06/02/2022'
 
 --CABEÇAS
 	INSERT INTO jogos VALUES
-	(1,2,NULL,NULL,'23/02/2022'),
-	(1,3,NULL,NULL,'27/02/2022'),
-	(1,4,NULL,NULL,'27/02/2022'),
-	(2,3,NULL,NULL,'23/02/2022'),
-	(2,4,NULL,NULL,'27/02/2022'),
-	(3,4,NULL,NULL,'23/02/2022')
+	(6,5,NULL,NULL,'06/02/2022'),
+	(6,7,NULL,NULL,'09/02/2022'),
+	(6,8,NULL,NULL,'13/02/2022'),
+	(7,5,NULL,NULL,'16/02/2022'),
+	(7,8,NULL,NULL,'20/02/2022'),
+	(8,5,NULL,NULL,'23/02/2022')
 
 --RESTO 1
 	WHILE @cont <= 16 
@@ -410,7 +410,7 @@ SET @data = '02/02/2022'
 		ELSE
 		BEGIN
 			SET @timeB = @cont
-			EXEC sp_data @data = '06/02/2022'
+			EXEC sp_data @data = '23/02/2022'
 			SET @dataUltimo = @data
 			INSERT INTO jogos VALUES
 			(@timeA, @timeB, NULL, NULL, @data)
@@ -476,6 +476,160 @@ SET @cont = 5
 			(@timeA, @timeB, NULL, NULL, @data)
 			SET @cont = @cont + 1
 		END
+	END
+SET @cont = 5
+--RESTO 4
+	WHILE @cont <= 16 
+	BEGIN
+		SET @timeA = 4
+		IF (@cont = 5 or @cont = 7 or @cont = 9)
+		BEGIN
+			SET @cont = @cont + 1
+		END
+		ELSE
+		BEGIN
+			SET @timeB = @cont
+			EXEC sp_data @data = @dataUltimo
+			SET @dataUltimo = @data
+			INSERT INTO jogos VALUES
+			(@timeA, @timeB, NULL, NULL, @data)
+			SET @cont = @cont + 1
+		END
+	END
+
+SET @cont = 6
+
+--RESTO 5
+	WHILE @cont <= 16 
+	BEGIN
+		SET @timeA = 5
+		IF (@cont = 7 or @cont = 9)
+		BEGIN
+			SET @cont = @cont + 1
+		END
+		ELSE
+		BEGIN
+			SET @timeB = @cont
+			EXEC sp_data @data = @dataUltimo
+			SET @dataUltimo = @data
+			INSERT INTO jogos VALUES
+			(@timeA, @timeB, NULL, NULL, @data)
+			SET @cont = @cont + 1
+		END
+	END
+
+SET @cont = 7
+
+--RESTO 6
+	WHILE @cont <= 16 
+	BEGIN
+		SET @timeA = 6
+		IF (@cont = 8 or @cont = 10)
+		BEGIN
+			SET @cont = @cont + 1
+		END
+		ELSE
+		BEGIN
+			SET @timeB = @cont
+			EXEC sp_data @data = @dataUltimo
+			SET @dataUltimo = @data
+			INSERT INTO jogos VALUES
+			(@timeA, @timeB, NULL, NULL, @data)
+			SET @cont = @cont + 1
+		END
+	END
+
+SET @cont = 8
+
+--RESTO 7
+	WHILE @cont <= 16 
+	BEGIN
+		SET @timeA = 7
+		IF (@cont = 9)
+		BEGIN
+			SET @cont = @cont + 1
+		END
+		ELSE
+		BEGIN
+			SET @timeB = @cont
+			EXEC sp_data @data = @dataUltimo
+			SET @dataUltimo = @data
+			INSERT INTO jogos VALUES
+			(@timeA, @timeB, NULL, NULL, @data)
+			SET @cont = @cont + 1
+		END
+	END
+
+SET @cont = 9
+--RESTO 8
+	WHILE @cont <= 16 
+	BEGIN
+		SET @timeA = 8
+		IF (@cont = 10)
+		BEGIN
+			SET @cont = @cont + 1
+		END
+		ELSE
+		BEGIN
+			SET @timeB = @cont
+			EXEC sp_data @data = @dataUltimo
+			SET @dataUltimo = @data
+			INSERT INTO jogos VALUES
+			(@timeA, @timeB, NULL, NULL, @data)
+			SET @cont = @cont + 1
+		END
+	END
+	
+SET @cont = 10
+--RESTO 9
+	WHILE @cont <= 16 
+	BEGIN
+		SET @timeA = 9
+		SET @timeB = @cont
+		EXEC sp_data @data = @dataUltimo
+			SET @dataUltimo = @data
+			INSERT INTO jogos VALUES
+			(@timeA, @timeB, NULL, NULL, @data)
+		SET @cont = @cont + 1
+	END
+	
+SET @cont = 11
+--RESTO 11
+	WHILE @cont <= 16 
+	BEGIN
+		SET @timeA = 10
+		SET @timeB = @cont
+		EXEC sp_data @data = @dataUltimo
+			SET @dataUltimo = @data
+			INSERT INTO jogos VALUES
+			(@timeA, @timeB, NULL, NULL, @data)
+		SET @cont = @cont + 1
+	END
+
+SET @cont = 12
+--RESTO 12
+	WHILE @cont <= 16 
+	BEGIN
+		SET @timeA = 11
+		SET @timeB = @cont
+		EXEC sp_data @data = @dataUltimo
+			SET @dataUltimo = @data
+			INSERT INTO jogos VALUES
+			(@timeA, @timeB, NULL, NULL, @data)
+		SET @cont = @cont + 1
+	END
+
+SET @cont = 13
+--RESTO 13
+	WHILE @cont <= 16 
+	BEGIN
+		SET @timeA = 12
+		SET @timeB = @cont
+		EXEC sp_data @data = @dataUltimo
+			SET @dataUltimo = @data
+			INSERT INTO jogos VALUES
+			(@timeA, @timeB, NULL, NULL, @data)
+		SET @cont = @cont + 1
 	END
 
 /*************************************************** PROCEDURE QUE VAI SER CHAMADA ******************/
