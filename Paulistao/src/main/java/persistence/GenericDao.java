@@ -11,7 +11,7 @@ private Connection c;
 	public Connection getConnection() throws ClassNotFoundException, SQLException{
 		
 		String hostName = "localhost";
-		String dbName = "av_teste2";
+		String dbName = "avaliacao1";
 		String user = "Julia";
 		String senha = "gemeas02";
 		
