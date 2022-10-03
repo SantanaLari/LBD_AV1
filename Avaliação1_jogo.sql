@@ -12,7 +12,7 @@ PRIMARY KEY(CodigoTime)
 
 CREATE TABLE grupos
 (
-Grupo		CHAR(1)		NOT NULL, 
+Grupo		CHAR(1)		NOT NULL 	CHECK(Grupo = 'A' OR Grupo = 'B' OR Grupo = 'C' OR Grupo = 'D'), 
 CodigoTime	INT			NOT NULL,
 PRIMARY KEY(Grupo, CodigoTime),
 FOREIGN KEY(CodigoTime) REFERENCES times(CodigoTime)
@@ -29,22 +29,22 @@ PRIMARY KEY(CodigoTimeA, CodigoTimeB)
 )
 
 INSERT INTO times VALUES
-(1, 'Corinthians', 'São Paulo', 'Neo Química Arena'),
-(2, 'Palmeiras', 'São Paulo', 'Allanz Parque'),
+(1, 'Corinthians', 'SÃ£o Paulo', 'Neo QuÃ­mica Arena'),
+(2, 'Palmeiras', 'SÃ£o Paulo', 'Allanz Parque'),
 (3, 'Santos', 'Santos', 'Vila Belmiro'),
-(4, 'São Paulo', 'São Paulo', 'Morumbi'),
-(5, 'Botafogo-SP', 'Ribeirão Preto', 'Santa Cruz'),
-(6, 'Ferroviária', 'Araraquara', 'Fonte Luminosa'),
+(4, 'SÃ£o Paulo', 'SÃ£o Paulo', 'Morumbi'),
+(5, 'Botafogo-SP', 'RibeirÃ£o Preto', 'Santa Cruz'),
+(6, 'FerroviÃ¡ria', 'Araraquara', 'Fonte Luminosa'),
 (7, 'Guarani', 'Campinas', 'Brinco de Ouro'),
-(8, 'Inter de Limeira', 'Limeira', 'Limeirão'),
-(9, 'Ituano', 'Itu', 'Novelli Júnior'),
-(10, 'Mirassol', 'Mirassol', 'José Maria de Campos Maia'),
+(8, 'Inter de Limeira', 'Limeira', 'LimeirÃ£o'),
+(9, 'Ituano', 'Itu', 'Novelli JÃºnior'),
+(10, 'Mirassol', 'Mirassol', 'JosÃ© Maria de Campos Maia'),
 (11, 'Novorizontino', 'Novo Horizonte', 'Jorge Ismael de Biasi'),
-(12, 'Ponte Preta', 'Campinas', 'Moisés Lucarelli'),
-(13, 'Red Bull Bragantino', 'Bragança Paulista', 'Nabi Abi Chedid'),
-(14, 'Santo André', 'Santo André', 'Bruno José Daniel'),
-(15, 'São Bento', 'Sorocaba', 'Walter Ribeiro'),
-(16, 'São Caetano', 'São Caetano do Sul', 'Anacletto Campanella')
+(12, 'Ponte Preta', 'Campinas', 'MoisÃ©s Lucarelli'),
+(13, 'Red Bull Bragantino', 'BraganÃ§a Paulista', 'Nabi Abi Chedid'),
+(14, 'Santo AndrÃ©', 'Santo AndrÃ©', 'Bruno JosÃ© Daniel'),
+(15, 'SÃ£o Bento', 'Sorocaba', 'Walter Ribeiro'),
+(16, 'SÃ£o Caetano', 'SÃ£o Caetano do Sul', 'Anacletto Campanella')
 
 /******************************************** GERAR GRUPOS ****************************/
 CREATE PROCEDURE p_geraGrupos_1 --Times (5 a 10) - A ou B; Times (11 a 16) - C ou D
@@ -127,14 +127,14 @@ CREATE PROCEDURE sp_data
     @data	DATE
 )
 AS
-	--Se for domingo, próximo dia de jogo é daqui a 3 dias
+	--Se for domingo, prÃ³ximo dia de jogo Ã© daqui a 3 dias
 	IF(DATEPART(WEEKDAY, @data) = 1) 
 	BEGIN
 		SET @data = DATEADD(DAY, 3, @data)
 		SET @data = CONVERT(VARCHAR(10), @data)
 		PRINT @data 
 	END
-	--Se for quarta-feira, próximo dia de jogo é daqui a 4 dias
+	--Se for quarta-feira, prÃ³ximo dia de jogo Ã© daqui a 4 dias
 	ELSE
 	BEGIN
 		SET @data = DATEADD(DAY, 4, @data)
@@ -156,7 +156,7 @@ AS
 SET @cont1 = 5	
 SET @dataUltimo = '23/02/2022'
 
---CABEÇAS
+--CABEÃ‡AS
 	INSERT INTO jogos VALUES
 	(1,2,NULL,NULL,'23/02/2022'),
 	(1,3,NULL,NULL,'27/02/2022'),
@@ -390,7 +390,7 @@ DECLARE @timeA INT,
 SET @cont = 5
 SET @data = '02/02/2022'
 
---CABEÇAS
+--CABEÃ‡AS
 	INSERT INTO jogos VALUES
 	(1,2,NULL,NULL,'23/02/2022'),
 	(1,3,NULL,NULL,'27/02/2022'),
